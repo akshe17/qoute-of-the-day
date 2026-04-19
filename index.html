@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote of the Day</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #ffffff;
+            color: #000000;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+        }
+
+        body.dark {
+            background: #000000;
+            color: #ffffff;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        header {
+            padding: 2rem 1.5rem 1rem;
+            border-bottom: 1px solid #e5e5e5;
+            text-align: center;
+        }
+
+        body.dark header {
+            border-bottom-color: #333333;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 500;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            margin-top: 0.5rem;
+            font-size: 14px;
+            color: #666666;
+            font-weight: 400;
+        }
+
+        body.dark .subtitle {
+            color: #999999;
+        }
+
+        main {
+            padding: 3rem 1.5rem;
+        }
+
+        .featured-quote {
+            margin-bottom: 3rem;
+        }
+
+        blockquote {
+            padding: 2rem 1.5rem;
+            border-left: 2px solid #000000;
+        }
+
+        body.dark blockquote {
+            border-left-color: #ffffff;
+        }
+
+        .quote-text {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-size: 14px;
+            color: #666666;
+            font-weight: 500;
+        }
+
+        body.dark .quote-author {
+            color: #999999;
+        }
+
+        .quote-date {
+            font-size: 12px;
+            color: #999999;
+            margin-top: 0.75rem;
+        }
+
+        body.dark .quote-date {
+            color: #666666;
+        }
+
+        .controls {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        button {
+            padding: 0.5rem 1.5rem;
+            border: 1px solid #000000;
+            background: #ffffff;
+            color: #000000;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        body.dark button {
+            border-color: #ffffff;
+            background: #000000;
+            color: #ffffff;
+        }
+
+        button.primary {
+            background: #000000;
+            color: #ffffff;
+        }
+
+        body.dark button.primary {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        button:active {
+            opacity: 0.7;
+        }
+
+        .quotes-list {
+            border-top: 1px solid #e5e5e5;
+            padding-top: 2rem;
+        }
+
+        body.dark .quotes-list {
+            border-top-color: #333333;
+        }
+
+        .list-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: #666666;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        body.dark .list-title {
+            color: #999999;
+        }
+
+        .quote-item {
+            padding: 1.5rem;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        body.dark .quote-item {
+            border-color: #333333;
+        }
+
+        .quote-item p {
+            margin: 0;
+        }
+
+        .quote-item .text {
+            font-size: 16px;
+            margin-bottom: 0.75rem;
+        }
+
+        .quote-item .author {
+            font-size: 13px;
+            color: #666666;
+            font-weight: 500;
+        }
+
+        body.dark .quote-item .author {
+            color: #999999;
+        }
+
+        .quote-item .date {
+            font-size: 12px;
+            color: #999999;
+            margin-top: 0.75rem;
+        }
+
+        body.dark .quote-item .date {
+            color: #666666;
+        }
+
+        footer {
+            padding: 2rem 1.5rem;
+            border-top: 1px solid #e5e5e5;
+            text-align: center;
+            color: #666666;
+            font-size: 13px;
+        }
+
+        body.dark footer {
+            border-top-color: #333333;
+            color: #999999;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #666666;
+        }
+
+        body.dark .loading {
+            color: #999999;
+        }
+
+        .error {
+            padding: 1.5rem;
+            border: 1px solid #ff6b6b;
+            border-radius: 8px;
+            background: #ffe0e0;
+            color: #c92a2a;
+            margin: 1rem 0;
+        }
+
+        body.dark .error {
+            background: #3d2626;
+            color: #ff8787;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: 1px solid #000000;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 13px;
+            border-radius: 8px;
+        }
+
+        body.dark .theme-toggle {
+            border-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">Dark</button>
+
+    <div class="container">
+        <header>
+            <h1>Quote</h1>
+            <p class="subtitle">Daily inspiration</p>
+        </header>
+
+        <main>
+            <div class="featured-quote">
+                <div id="featured" style="text-align: center;">
+                    <div class="loading">Loading quotes...</div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button onclick="showPrevious()">Previous</button>
+                <button class="primary" onclick="showNext()">Next</button>
+            </div>
+
+            <div class="quotes-list">
+                <h2 class="list-title">Recent quotes</h2>
+                <div id="quotes-container" style="text-align: center;">
+                    <div class="loading">Loading...</div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Updated daily at 6:00 AM</p>
+        </footer>
+    </div>
+
+    <script>
+        let allQuotes = [];
+        let currentIndex = 0;
+
+        const GITHUB_USERNAME = 'akshe17';
+        const REPO_NAME = 'quote-of-the-day';
+        const RAW_URL = `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${REPO_NAME}/main/quotes.md`;
+
+        async function fetchQuotes() {
+            try {
+                const response = await fetch(RAW_URL);
+                if (!response.ok) throw new Error('Failed to fetch quotes');
+                const text = await response.text();
+                parseQuotes(text);
+                updateFeatured();
+                renderList();
+            } catch (error) {
+                document.getElementById('featured').innerHTML = `<div class="error">Error loading quotes. Make sure your quotes.md file exists on GitHub!</div>`;
+                document.getElementById('quotes-container').innerHTML = `<div class="error">Unable to fetch from: ${RAW_URL}</div>`;
+            }
+        }
+
+        function parseQuotes(text) {
+            const lines = text.split('\n');
+            let currentQuote = null;
+
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i].trim();
+
+                if (line.startsWith('## ')) {
+                    if (currentQuote && currentQuote.text) {
+                        allQuotes.push(currentQuote);
+                    }
+                    currentQuote = {
+                        date: line.replace('## ', ''),
+                        text: '',
+                        author: ''
+                    };
+                } else if (line.startsWith('> ')) {
+                    currentQuote.text = line.replace('> ', '');
+                } else if (line.startsWith('— ')) {
+                    currentQuote.author = line.replace('— *', '').replace('*', '').trim();
+                }
+            }
+
+            if (currentQuote && currentQuote.text) {
+                allQuotes.push(currentQuote);
+            }
+
+            if (allQuotes.length === 0) {
+                allQuotes = [{
+                    date: new Date().toISOString().split('T')[0],
+                    text: 'No quotes found. Make sure your quotes.md file is formatted correctly.',
+                    author: 'Quote Bot'
+                }];
+            }
+        }
+
+        function updateFeatured() {
+            if (allQuotes.length === 0) return;
+
+            const quote = allQuotes[currentIndex];
+            const featured = document.getElementById('featured');
+            featured.innerHTML = `
+                <blockquote>
+                    <p class="quote-text">${escapeHtml(quote.text)}</p>
+                    <p class="quote-author">— ${escapeHtml(quote.author)}</p>
+                    <p class="quote-date">${quote.date}</p>
+                </blockquote>
+            `;
+        }
+
+        function renderList() {
+            const container = document.getElementById('quotes-container');
+            if (allQuotes.length === 0) {
+                container.innerHTML = '<div class="loading">No quotes available</div>';
+                return;
+            }
+
+            const recentQuotes = allQuotes.slice(0, 10);
+            container.innerHTML = recentQuotes.map(quote => `
+                <div class="quote-item">
+                    <p class="text">${escapeHtml(quote.text)}</p>
+                    <p class="author">— ${escapeHtml(quote.author)}</p>
+                    <p class="date">${quote.date}</p>
+                </div>
+            `).join('');
+        }
+
+        function showNext() {
+            if (allQuotes.length > 0) {
+                currentIndex = (currentIndex + 1) % allQuotes.length;
+                updateFeatured();
+            }
+        }
+
+        function showPrevious() {
+            if (allQuotes.length > 0) {
+                currentIndex = (currentIndex - 1 + allQuotes.length) % allQuotes.length;
+                updateFeatured();
+            }
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('dark');
+            localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+            updateThemeButton();
+        }
+
+        function updateThemeButton() {
+            const btn = document.querySelector('.theme-toggle');
+            btn.textContent = document.body.classList.contains('dark') ? 'Light' : 'Dark';
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        window.addEventListener('load', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark');
+            }
+            updateThemeButton();
+            fetchQuotes();
+        });
+
+        setInterval(fetchQuotes, 60000);
+    </script>
+</body>
+</html>
