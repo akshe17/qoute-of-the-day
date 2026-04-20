@@ -63,5 +63,11 @@ Daily quotes tracked here.
 
 — *Steve Jobs*
 
+## 2026-04-20 23:32:52
+
+> A house divided against itself cannot stand.
+
+— *Abraham Lincoln*
+
 ---
 
