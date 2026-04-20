@@ -10,15 +10,22 @@ import subprocess
 import sys
 
 def get_quote():
-    """Fetch a random quote from quotable.io API"""
+    """Fetch a random quote from type.fit API"""
     try:
-        response = requests.get('https://api.quotable.io/random', timeout=5)
+        print("📡 Fetching quote...")
+        response = requests.get('https://type.fit/api/quotes', timeout=5)
         response.raise_for_status()
-        data = response.json()
-        return data['content'], data['author']
+        quotes = response.json()
+        
+        import random
+        quote = random.choice(quotes)
+        text = quote['text']
+        author = quote.get('author', 'Unknown').replace(', type.fit', '')
+        
+        print(f"✅ Quote fetched: {text[:50]}...")
+        return text, author
     except Exception as e:
-        print(f"Error fetching quote: {e}")
-        # Fallback quote if API fails
+        print(f"❌ Error fetching quote: {e}")
         return "The only way to do great work is to love what you do.", "Steve Jobs"
 
 def update_quote_file(quote, author):
