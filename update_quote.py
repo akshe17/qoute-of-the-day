@@ -19,13 +19,23 @@ def get_quote():
         
         import random
         quote = random.choice(quotes)
-        text = quote['text']
-        author = quote.get('author', 'Unknown').replace(', type.fit', '')
+        text = quote.get('text', 'Unknown quote')
+        author = quote.get('author', 'Unknown')
+        
+        # Handle None author
+        if author is None:
+            author = 'Unknown'
+        
+        # Clean up author name
+        if isinstance(author, str):
+            author = author.replace(', type.fit', '')
         
         print(f"✅ Quote fetched: {text[:50]}...")
         return text, author
     except Exception as e:
         print(f"❌ Error fetching quote: {e}")
+        import traceback
+        traceback.print_exc()
         return "The only way to do great work is to love what you do.", "Steve Jobs"
 
 def update_quote_file(quote, author):
