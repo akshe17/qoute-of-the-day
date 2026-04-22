@@ -87,5 +87,11 @@ Daily quotes tracked here.
 
 — *Yogi Berra*
 
+## 2026-04-22 22:46:01
+
+> Difficulties increase the nearer we get to the goal.
+
+— *Johann Wolfgang von Goethe*
+
 ---
 
