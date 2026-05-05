@@ -165,5 +165,11 @@ Daily quotes tracked here.
 
 — *Thomas Edison*
 
+## 2026-05-05 22:54:03
+
+> You can observe a lot just by watching.
+
+— *Yogi Berra*
+
 ---
 
