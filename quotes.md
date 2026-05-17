@@ -237,5 +237,11 @@ Daily quotes tracked here.
 
 — *Yogi Berra*
 
+## 2026-05-17 22:52:25
+
+> Fate is in your hands and no one elses
+
+— *Byron Pulsifer*
+
 ---
 
