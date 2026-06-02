@@ -333,5 +333,11 @@ Daily quotes tracked here.
 
 — *Abraham Lincoln*
 
+## 2026-06-02 23:44:12
+
+> A house divided against itself cannot stand.
+
+— *Abraham Lincoln*
+
 ---
 
