@@ -459,5 +459,11 @@ Daily quotes tracked here.
 
 — *Abraham Lincoln*
 
+## 2026-06-23 23:07:43
+
+> You can observe a lot just by watching.
+
+— *Yogi Berra*
+
 ---
 
