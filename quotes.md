@@ -609,5 +609,11 @@ Daily quotes tracked here.
 
 — *Johann Wolfgang von Goethe*
 
+## 2026-07-18 22:47:08
+
+> You can observe a lot just by watching.
+
+— *Yogi Berra*
+
 ---
 
