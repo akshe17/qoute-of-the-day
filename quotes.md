@@ -747,5 +747,11 @@ Daily quotes tracked here.
 
 — *Yogi Berra*
 
+## 2026-08-10 22:34:44
+
+> You can observe a lot just by watching.
+
+— *Yogi Berra*
+
 ---
 
