@@ -777,5 +777,11 @@ Daily quotes tracked here.
 
 — *Byron Pulsifer*
 
+## 2026-08-15 22:18:30
+
+> You can observe a lot just by watching.
+
+— *Yogi Berra*
+
 ---
 
